@@ -1,20 +1,23 @@
 
 
-<div class="row">
-  {{#each films}}
-<div class="card" style="width: 18rem;">
-  <img src={{../IMG_PATH}}{{poster_path}} class="card-img-top" alt="Cartel">
-  <div class="card-body">
-    <h5 class="card-title">{{title}}</h5>
-      </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{vote_average}}</li>
-    <li class="list-group-item">{{release_date}}</li>
-    <li class="list-group-item">{{popularity}}</li>
+
+<div class="container-flex">
+<div class="row align-items-center">
+
+{{#each films}}
+
+<div class="col-xl-3 col-sm-4">
+  <img src={{../IMG_PATH}}{{poster_path}} alt="Cartel">
+  <ul class="list-group">
+  <li class="list-group-item active">{{title}}</li>
+  <li class="list-group-item">{{release_date}}</li>
+  <li class="list-group-item">{{popularity}}</li>
+  <li class="list-group-item">{{vote_average}}</li>
+  <a href="/film/{{id}}"><li class="list-group-item">Más info.</li>
+  </a>
   </ul>
-  <div class="card-body">
-        <a href="/film/{{id}}" class="card-link">Ver más info.</a>
   </div>
-</div>
+
 {{/each}}
+</div>
 </div>
