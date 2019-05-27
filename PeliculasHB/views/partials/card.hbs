@@ -1,0 +1,20 @@
+
+
+<div class="row">
+  {{#each films}}
+<div class="card" style="width: 18rem;">
+  <img src={{../IMG_PATH}}{{poster_path}} class="card-img-top" alt="Cartel">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+      </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{vote_average}}</li>
+    <li class="list-group-item">{{release_date}}</li>
+    <li class="list-group-item">{{popularity}}</li>
+  </ul>
+  <div class="card-body">
+        <a href="/film/{{id}}" class="card-link">Ver más info.</a>
+  </div>
+</div>
+{{/each}}
+</div>

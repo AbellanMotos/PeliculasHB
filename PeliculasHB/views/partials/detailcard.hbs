@@ -1,0 +1,14 @@
+
+
+
+{{#with films}}
+    <div class="card bg-dark text-white">
+  <img src="{{../IMG_PATH}}{{poster_path}}" class="card-img" alt="Cartel">
+  <div class="card-img-overlay">
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text">{{overview}}</p>
+    <p class="card-text">{{release_date}}</p>
+  </div>
+</div>
+{{/with}}
+
