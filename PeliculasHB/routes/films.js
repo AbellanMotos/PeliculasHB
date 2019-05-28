@@ -11,6 +11,8 @@ const API_END = '&language=es-ES'
 const API_MOVIE ='movie/'
 
 
+//Imprimir peliculas
+
 router.get('/', async  (req, res, next) => {
   const results = await axios.get(API_URL + API_POPULAR_URL + '?api_key=' + API_KEY + API_END)
   let films = results.data.results
@@ -21,7 +23,7 @@ router.get('/', async  (req, res, next) => {
      })
   });
 
-
+//Ordenar de la A a la Z
 
 router.get('/orderfilms', async  (req, res, next) => {
   const results = await axios.get(API_URL + API_POPULAR_URL + '?api_key=' + API_KEY + API_END)
@@ -46,6 +48,8 @@ router.get('/orderfilms', async  (req, res, next) => {
      })
   });
 
+  //Detalle pelicula
+
   router.get('/film/:id', async function(req, res, next) {
     let id = +req.params.id
     const results = await axios.get(API_URL + API_MOVIE + id + '?api_key=' + API_KEY + API_END)
@@ -58,6 +62,31 @@ router.get('/orderfilms', async  (req, res, next) => {
          
     
   });
+
+  //Ordenar de la Z a la A
+
+  router.get('/orderfilms2', async  (req, res, next) => {
+    const results = await axios.get(API_URL + API_POPULAR_URL + '?api_key=' + API_KEY + API_END)
+    let films = results.data.results
+    
+    
+      films.sort( (a, b) => {
+          let film1 = a.title
+          let film2 = b.title
+          if (film1 < film2) {
+              return 2
+          } else if (film1 > film2) {
+              return 1
+          } return 0
+          })
+        
+        
+      res.render('orderfilms2', { 
+        title: 'abc films' ,
+        films,
+        
+       })
+    });
 
 module.exports = router;
 
