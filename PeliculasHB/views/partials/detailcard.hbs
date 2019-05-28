@@ -1,9 +1,9 @@
 
 
 
-{{#with films}}
+{{!-- {{#with films}}
     <div class="card bg-dark text-white">
-  <img src="{{../IMG_PATH}}{{poster_path}}" class="card-img" alt="Cartel">
+  <img src="{{../FONDO_PATH}}{{backdrop_path}}" class="card-img" alt="Cartel">
   <div class="card-img-overlay">
     <h5 class="card-title">{{title}}</h5>
     <p class="card-text">{{overview}}</p>
@@ -11,4 +11,15 @@
   </div>
 </div>
 {{/with}}
+ --}}
 
+{{#with films}}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <img src="{{../FONDO_PATH}}{{backdrop_path}}" class="card-img" alt="Cartel">
+  <div class="card-img-overlay">
+    <h1 class="display-4">{{title}}</h1>
+    <p class="lead">{{overview}}</p>
+  </div>
+</div>
+{{/with}}

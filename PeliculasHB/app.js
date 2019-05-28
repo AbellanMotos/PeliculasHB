@@ -7,7 +7,7 @@ var logger = require('morgan');
 var app = express();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-let filmsRouter = require('./routes/films')
+let filmsRouter = require('./routes/films');
 let hbs = require('hbs')
 app.use('/components', express.static(__dirname + '/public/components')) 
 
@@ -23,9 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/film', filmsRouter)
+app.use('/', filmsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

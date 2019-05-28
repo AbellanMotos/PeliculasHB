@@ -11,18 +11,53 @@ const API_END = '&language=es-ES'
 const API_MOVIE ='movie/'
 
 
+router.get('/', async  (req, res, next) => {
+  const results = await axios.get(API_URL + API_POPULAR_URL + '?api_key=' + API_KEY + API_END)
+  let films = results.data.results
+ 
+    res.render('index', { 
+      title: 'abc films' ,
+      films,
+     })
+  });
 
-router.get('/:id', async function(req, res, next) {
-  let id = +req.params.id
-  const results = await axios.get(API_URL + API_MOVIE + id + '?api_key=' + API_KEY + API_END)
-  let films = results.data
-  res.render('detail', {
-    films,
-    IMG_PATH
-  })
-       
+
+
+router.get('/orderfilms', async  (req, res, next) => {
+  const results = await axios.get(API_URL + API_POPULAR_URL + '?api_key=' + API_KEY + API_END)
+  let films = results.data.results
   
-});
+  
+    films.sort( (a, b) => {
+        let film1 = a.title
+        let film2 = b.title
+        if (film1 > film2) {
+            return 1
+        } else if (film1 < film2) {
+            return -1
+        } return 0
+        })
+      
+      
+    res.render('orderfilms', { 
+      title: 'abc films' ,
+      films,
+      
+     })
+  });
+
+  router.get('/film/:id', async function(req, res, next) {
+    let id = +req.params.id
+    const results = await axios.get(API_URL + API_MOVIE + id + '?api_key=' + API_KEY + API_END)
+    let films = results.data
+    res.render('detail', {
+      films,
+      IMG_PATH,
+      FONDO_PATH
+    })
+         
+    
+  });
 
 module.exports = router;
 
